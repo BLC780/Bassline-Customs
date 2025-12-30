@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account & Payments — Bassline Customs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Bassline Customs</a>
+      <nav class="nav">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="banking.html" class="active">Account</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="banking-hero container">
+      <h1>Account & Payments</h1>
+      <p>Manage your account, view invoices, and secure financing options</p>
+    </section>
+
+    <section class="container banking-content">
+      <div class="banking-grid">
+        <!-- Login/Register Panel -->
+        <div class="banking-panel" id="authPanel">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="login">Sign In</button>
+            <button class="tab-btn" data-tab="register">Register</button>
+          </div>
+
+          <div class="tab-content active" id="login">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+              </div>
+              <button type="submit" class="cta">Sign In</button>
+            </form>
+          </div>
+
+          <div class="tab-content" id="register">
+            <form id="registerForm">
+              <div class="form-group">
+                <label for="regName">Full Name</label>
+                <input type="text" id="regName" required>
+              </div>
+              <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="regPhone">Phone</label>
+                <input type="tel" id="regPhone" required>
+              </div>
+              <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" required>
+              </div>
+              <button type="submit" class="cta">Create Account</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Dashboard Panel (Hidden until logged in) -->
+        <div class="banking-panel hidden" id="dashboardPanel">
+          <h2>Welcome, <span id="userName">User</span></h2>
+          <div class="account-info">
+            <div class="info-card">
+              <p class="label">Account Balance</p>
+              <p class="value">R<span id="accountBalance">0.00</span></p>
+            </div>
+            <div class="info-card">
+              <p class="label">Total Spent</p>
+              <p class="value">R<span id="totalSpent">0.00</span></p>
+            </div>
+            <div class="info-card">
+              <p class="label">Active Loans</p>
+              <p class="value"><span id="activeLoans">0</span></p>
+            </div>
+          </div>
+
+          <div class="dashboard-actions">
+            <a href="checkout.html" class="cta">Book Service & Pay</a>
+            <button class="cta ghost" onclick="viewInvoices()">View Invoices</button>
+            <button class="cta ghost" onclick="logout()">Sign Out</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Invoices Section -->
+      <div class="invoices-section hidden" id="invoicesSection">
+        <h2>Your Invoices</h2>
+        <div class="invoices-list" id="invoicesList">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bassline Customs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/banking.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', initBankingPage);
+
+    function initBankingPage() {
+      const currentUser = getCurrentUser();
+      const authPanel = document.getElementById('authPanel');
+      const dashboardPanel = document.getElementById('dashboardPanel');
+
+      if (currentUser) {
+        authPanel.classList.add('hidden');
+        dashboardPanel.classList.remove('hidden');
+        document.getElementById('userName').textContent = currentUser.name;
+        updateAccountInfo(currentUser);
+      }
+
+      // Tab switching
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById(this.dataset.tab).classList.add('active');
+        });
+      });
+
+      // Login form
+      document.getElementById('loginForm').addEventListener('submit', handleLogin);
+      // Register form
+      document.getElementById('registerForm').addEventListener('submit', handleRegister);
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      const user = authenticateUser(email, password);
+      if (user) {
+        setCurrentUser(user);
+        location.reload();
+      } else {
+        alert('Invalid email or password');
+      }
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const phone = document.getElementById('regPhone').value;
+      const password = document.getElementById('regPassword').value;
+
+      const user = registerNewUser(name, email, phone, password);
+      if (user) {
+        setCurrentUser(user);
+        alert('Account created successfully!');
+        location.reload();
+      } else {
+        alert('Email already registered');
+      }
+    }
+
+    function updateAccountInfo(user) {
+      const transactions = getTransactions(user.id);
+      const totalSpent = transactions.reduce((sum, t) => sum + t.amount, 0);
+      const activeLoans = getActiveLoans(user.id);
+
+      document.getElementById('accountBalance').textContent = (user.balance || 0).toFixed(2);
+      document.getElementById('totalSpent').textContent = totalSpent.toFixed(2);
+      document.getElementById('activeLoans').textContent = activeLoans.length;
+    }
+
+    function viewInvoices() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const invoicesSection = document.getElementById('invoicesSection');
+      const invoicesList = document.getElementById('invoicesList');
+      const transactions = getTransactions(currentUser.id);
+      invoicesList.innerHTML = transactions.map(t => {
+        const statusText = (t.status || '').charAt(0).toUpperCase() + (t.status || '').slice(1);
+        const refHtml = t.bankReference ? `<p class="text-small"><strong>Reference:</strong> ${t.bankReference}</p>` : '';
+        const adminAction = (t.status === 'pending' && (typeof MERCHANT_ADMIN_EMAIL !== 'undefined') && currentUser.email === MERCHANT_ADMIN_EMAIL)
+          ? `<button class="cta ghost small" onclick="markAsPaid('${t.id}')">Mark as Paid</button>`
+          : '';
+
+        return `
+          <div class="invoice-item">
+            <div class="invoice-info">
+              <h4>${t.service}</h4>
+              <p>Date: ${new Date(t.date).toLocaleDateString()}</p>
+              ${refHtml}
+            </div>
+            <div class="invoice-amount">
+              <p class="price">R${t.amount.toFixed(2)}</p>
+              <span class="status ${t.status}">${statusText}</span>
+              ${adminAction}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      invoicesSection.classList.remove('hidden');
+      invoicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function markAsPaid(transactionId) {
+      if (!confirm('Mark this invoice as paid? This will set status to completed.')) return;
+      const ok = updateTransactionStatus(transactionId, 'completed');
+      if (ok) {
+        alert('Invoice marked as paid.');
+        viewInvoices();
+        // Optionally refresh account panel
+        const currentUser = getCurrentUser();
+        if (currentUser) updateAccountInfo(currentUser);
+      } else {
+        alert('Could not update transaction.');
+      }
+    }
+
+    function logout() {
+      clearCurrentUser();
+      location.reload();
+    }
+  </script>
+</body>
+</html>

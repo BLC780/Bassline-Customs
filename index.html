@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bassline Customs — Car Audio Installation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Bassline Customs</a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="banking.html">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <h1>Make Your Ride Sound Legendary</h1>
+        <p>Custom subwoofers, amps, speakers and pro tuning — built for bass lovers and audiophiles.</p>
+        <div class="hero-ctas">
+          <a class="cta" href="checkout.html">Make Payment</a>
+          <a class="cta ghost" href="#gallery">See Our Work</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="container services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <article>
+          <h3>Speaker Upgrades</h3>
+          <p>High-fidelity component and coaxial speaker installs for crisp, clear sound.</p>
+        </article>
+        <article>
+          <h3>Subwoofer Systems</h3>
+          <p>Custom enclosures, wiring and tuning for deep, accurate bass.</p>
+        </article>
+        <article>
+          <h3>Amplifiers & Tuning</h3>
+          <p>Multi-channel amp installs for optimal performance.</p>
+        </article>
+        <article>
+          <h3>Electrical Upgrades</h3>
+          <p>Upgraded charging systems, batteries, and high-current wiring for reliable power.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="pricing container">
+      <h2>Pricing</h2>
+      <div class="pricing-grid">
+        <div class="price-card card">
+          <h3>Speaker Upgrades</h3>
+          <p class="price-big">R2 000-R5 000</p>
+          <p class="muted">Starting from — includes parts & install</p>
+        </div>
+        <div class="price-card card">
+          <h3>Subwoofer Systems</h3>
+          <p class="price-big">R4 999-R8 000</p>
+          <p class="muted">Starting from — custom enclosures </p>
+        </div>
+        <div class="price-card card">
+          <h3>Amplifiers & Tuning</h3>
+          <p class="price-big">R2 199-R6 000</p>
+          <p class="muted">Starting from — amp installs and tuning</p>
+        </div>
+        <div class="price-card card">
+          <h3>Electrical Upgrades</h3>
+          <p class="price-big">R2 000-R4 000</p>
+          <p class="muted">Starting from — batteries, wiring </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="container gallery">
+      <h2>Gallery</h2>
+      <div class="grid">
+        <img src="images (1).jpg" alt="gallery1">
+        <img src="images (2).jpg" alt="gallery2">
+        <img src="images (3).jpg" alt="gallery3">
+        <img src="images.jpg" alt="gallery4">
+      </div>
+    </section>
+
+    <section class="container stats">
+      <div class="stats-grid">
+        <div class="stat card">
+          <h3>30</h3>
+          <p>Installs completed</p>
+        </div>
+        <div class="stat card">
+          <h3>5y</h3>
+          <p>Experience in custom installs</p>
+        </div>
+        <div class="stat card">
+          <h3>5-Star</h3>
+          <p>Average customer rating</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Bassline Customs — All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+<Style>
+  :root{
+  --accent:#e63946;
+  --dark:#0b0c10;
+  --muted:#6b7280;
+  --bg:#0f1720;
+  --card:#0b1220;
+}
+*{box-sizing:border-box}
+.body-fallback{display:none}
+body{margin:0;font-family:Poppins,Inter,system-ui,Segoe UI,Arial;color:#e6eef8;background:linear-gradient(180deg,#071021 0%, #071425 100%);}
+.container{max-width:1100px;margin:0 auto;padding:28px}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{color:white;font-weight:700;text-decoration:none;font-size:1.2rem}
+.nav a{color:#d1d9e6;margin-left:18px;text-decoration:none}
+.site-header{background:rgba(0,0,0,0.25);backdrop-filter:blur(6px);position:sticky;top:0;z-index:40}
+.hero{padding:90px 0;color:white;position:relative;background-image:url('https://images.unsplash.com/photo-1603993097397-89f74a8a4f2b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4a0fd3d2f6e6a1a3b9b3f5f1d2b9c2d7');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.45));}
+.hero-content{position:relative;padding:40px 0}
+.hero-content h1{font-size:2.8rem;margin:0 0 10px;letter-spacing:-0.5px}
+.hero-content p{color:var(--muted);margin:0 0 18px;max-width:720px}
+.hero-ctas{display:flex;gap:12px}
+.cta{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;box-shadow:0 6px 18px rgba(230,57,70,0.14);transition:transform .18s ease,box-shadow .18s ease}
+.cta.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+.cta:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.5)}
+.services{padding:48px 0}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.services article{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:22px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6);transition:transform .16s ease}
+.services article:hover{transform:translateY(-6px)}
+.services h3{margin:0 0 8px}
+
+.price{color:var(--accent);font-weight:700;margin:6px 0}
+
+.pricing{padding:28px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.price-card h3{margin:0 0 6px}
+.price-big{font-size:1.4rem;color:var(--accent);font-weight:800;margin:6px 0}
+.muted{color:var(--muted);font-size:0.95rem}
+.gallery{padding:36px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.grid img{width:100%;height:200px;object-fit:cover;border-radius:8px;transition:transform .18s ease}
+.grid img:hover{transform:scale(1.03)}
+.contact{padding:36px 0}
+.form-row{display:flex;gap:12px;margin-bottom:12px}
+input,textarea{flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#e6eef8}
+.actions{align-items:center}
+.btn{background:var(--accent);color:white;padding:12px 14px;border-radius:8px;border:none;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.site-footer{padding:22px 0;color:var(--muted)}
+
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+.stats{padding:36px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.stat h3{margin:0;font-size:1.6rem}
+.stat p{margin:6px 0 0;color:var(--muted)}
+
+.contact-page h1{margin-top:8px}
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.contact-info .map-placeholder{height:160px;background:linear-gradient(90deg,#06101a,#0b1621);border-radius:8px;margin-top:12px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:8px;margin:14px 0;padding:12px 16px;background:#25d366;color:white;border-radius:8px;text-decoration:none;font-weight:600;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 4px 12px rgba(37,211,102,0.2)}
+.whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(37,211,102,0.3)}
+
+
+@media(max-width:920px){
+  .contact-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:720px){
+  .hero-content h1{font-size:1.6rem}
+  .form-row{flex-direction:column}
+  .grid img{height:140px}
+  .hero{padding:60px 0}
+}
+:root{
+  --accent:#e63946;
+  --dark:#0b0c10;
+  --muted:#6b7280;
+  --bg:#0f1720;
+  --card:#0b1220;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,Inter,system-ui,Segoe UI,Arial;color:#e6eef8;background:linear-gradient(180deg,#071021 0%, #071425 100%);}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{color:white;font-weight:700;text-decoration:none;font-size:1.1rem}
+.nav{display:flex;gap:16px;align-items:center}
+.nav a{color:#d1d9e6;text-decoration:none}
+.site-header{background:rgba(0,0,0,0.25);backdrop-filter:blur(6px);position:sticky;top:0;z-index:40}
+.hero{padding:80px 0;color:white;position:relative;background-image:url('https://images.unsplash.com/photo-1603993097397-89f74a8a4f2b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=4a0fd3d2f6e6a1a3b9b3f5f1d2b9c2d7');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0.6),rgba(2,6,23,0.45));}
+.hero-content{position:relative;padding:20px 0}
+.hero-content h1{font-size:2.4rem;margin:0 0 10px;letter-spacing:-0.5px}
+.hero-content p{color:var(--muted);margin:0 0 18px;max-width:720px}
+.hero-ctas{display:flex;gap:12px}
+.cta{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;box-shadow:0 6px 18px rgba(230,57,70,0.14);transition:transform .18s ease,box-shadow .18s ease}
+.cta.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+.cta:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,0.5)}
+.services{padding:36px 0}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.services article{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6);transition:transform .16s ease}
+.services article:hover{transform:translateY(-6px)}
+.services h3{margin:0 0 8px}
+.price{color:var(--accent);font-weight:700;margin:6px 0}
+.pricing{padding:24px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.price-card h3{margin:0 0 6px}
+.price-big{font-size:1.4rem;color:var(--accent);font-weight:800;margin:6px 0}
+.muted{color:var(--muted);font-size:0.95rem}
+.gallery{padding:28px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.grid img{width:100%;height:auto;object-fit:cover;border-radius:8px;transition:transform .18s ease}
+.grid img:hover{transform:scale(1.03)}
+.contact{padding:36px 0}
+.form-row{display:flex;gap:12px;margin-bottom:12px}
+input,textarea{flex:1;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:#e6eef8}
+.actions{align-items:center}
+.btn{background:var(--accent);color:white;padding:12px 14px;border-radius:8px;border:none;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.site-footer{padding:22px 0;color:var(--muted)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px}
+.stats{padding:28px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.stat h3{margin:0;font-size:1.6rem}
+.stat p{margin:6px 0 0;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.contact-info .map-placeholder{height:160px;background:linear-gradient(90deg,#06101a,#0b1621);border-radius:8px;margin-top:12px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:8px;margin:14px 0;padding:12px 16px;background:#25d366;color:white;border-radius:8px;text-decoration:none;font-weight:600;transition:transform .18s ease,box-shadow .18s ease;box-shadow:0 4px 12px rgba(37,211,102,0.2)}
+.whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(37,211,102,0.3)}
+
+/* Responsive helpers */
+img,iframe,video{max-width:100%;height:auto}
+
+@media (max-width:920px){
+  .contact-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:720px){
+  .container{padding:16px}
+  .nav-wrap{flex-direction:column;align-items:flex-start}
+  .nav{width:100%;display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .hero-content h1{font-size:1.6rem}
+  .form-row{flex-direction:column}
+  .grid img{height:auto}
+  .hero{padding:40px 0}
+  .hero-ctas{flex-direction:column}
+  .cta{width:100%;text-align:center}
+}
+
+@media (min-width:1024px){
+  .hero-content h1{font-size:3rem}
+}
+</Style>

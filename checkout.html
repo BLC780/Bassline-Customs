@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Bassline Customs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Bassline Customs</a>
+      <nav class="nav">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="banking.html">Account</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="checkout-hero container">
+      <h1>Secure Checkout</h1>
+      <p>Add services to your cart and proceed to payment</p>
+    </section>
+
+    <section class="container checkout-content">
+      <div class="checkout-grid">
+        <!-- Service Selection -->
+        <div class="checkout-panel">
+          <h2>Select Services</h2>
+          <div class="services-selection">
+            <div class="service-option" data-service="speakers" data-price="2000">
+              <h3>Speaker Upgrades</h3>
+              <p class="price">R2,000</p>
+              <p class="description">High-fidelity component and coaxial speaker installs</p>
+              <button class="select-btn" type="button">Add to Cart</button>
+            </div>
+            <div class="service-option" data-service="subwoofer" data-price="4999">
+              <h3>Subwoofer Systems</h3>
+              <p class="price">R4,999</p>
+              <p class="description">Custom enclosures, wiring and tuning for deep bass</p>
+              <button class="select-btn" type="button">Add to Cart</button>
+            </div>
+            <div class="service-option" data-service="amplifier" data-price="2199">
+              <h3>Amplifiers & Tuning</h3>
+              <p class="price">R2,199</p>
+              <p class="description">Multi-channel amp installs for optimal performance</p>
+              <button class="select-btn" type="button">Add to Cart</button>
+            </div>
+            <div class="service-option" data-service="electrical" data-price="2000">
+              <h3>Electrical Upgrades</h3>
+              <p class="price">R2,000</p>
+              <p class="description">Upgraded charging systems and high-current wiring</p>
+              <button class="select-btn" type="button">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cart Panel -->
+        <div class="checkout-panel">
+          <h2>Your Cart</h2>
+          <div class="cart-container">
+            <div class="cart-items" id="cartItems">
+              <p class="empty-cart">Your cart is empty. Add services above.</p>
+            </div>
+
+            <!-- Financing Options -->
+            <div class="payment-options" id="paymentOptions" style="display: none;">
+              <h3>Payment Method</h3>
+              <div class="payment-option">
+                <input type="radio" name="paymentMethod" value="full" id="fullPayment" checked>
+                <label for="fullPayment">
+                  <span class="option-title">Pay in Full</span>
+                  <span class="option-desc">Full payment today</span>
+                </label>
+              </div>
+              <div class="payment-option">
+                <input type="radio" name="paymentMethod" value="installment" id="installment">
+                <label for="installment">
+                  <span class="option-title">Financing Plan</span>
+                  <span class="option-desc">Spread payments over time</span>
+                </label>
+              </div>
+              <div class="payment-option">
+                <input type="radio" name="paymentMethod" value="bank" id="bankTransfer">
+                <label for="bankTransfer">
+                  <span class="option-title">Bank Transfer</span>
+                  <span class="option-desc">Pay via EFT / bank deposit (manual verification)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Installment Options -->
+            <div id="installmentOptions" class="installment-options hidden">
+              <label for="installmentTerm">Choose Payment Term:</label>
+              <select id="installmentTerm">
+                <option value="3">3 Months (8% interest)</option>
+                <option value="6">6 Months (12% interest)</option>
+                <option value="12">12 Months (16% interest)</option>
+              </select>
+              <div class="installment-breakdown" id="installmentBreakdown"></div>
+            </div>
+
+            <!-- Payment Details -->
+            <div class="payment-form" id="paymentForm" style="display: none;">
+              <h3>Payment Details</h3>
+              <div class="form-group">
+                <label for="cardName">Cardholder Name</label>
+                <input type="text" id="cardName" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cardExpiry">Expiry Date</label>
+                  <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label for="cardCVC">CVC</label>
+                  <input type="text" id="cardCVC" placeholder="123" maxlength="3">
+                </div>
+              </div>
+            </div>
+
+            <!-- Bank transfer instructions -->
+            <div id="bankInstructions" class="bank-instructions hidden">
+              <h3>Bank Transfer Instructions</h3>
+              <p>Please transfer the total amount to the following account and use the payment reference provided below.</p>
+              <div class="bank-details">
+                <p><strong>Account Name:</strong> <span id="bankAccountName"></span></p>
+                <p><strong>Bank:</strong> <span id="bankName"></span></p>
+                <p><strong>Account Number:</strong> <span id="bankAccountNumber"></span></p>
+                <p><strong>Branch Code:</strong> <span id="bankBranchCode"></span></p>
+                <p><strong>Reference:</strong> <span id="bankReference"></span></p>
+              </div>
+              <p class="text-small">After you complete the transfer, your payment will be verified manually and the order marked as paid.</p>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+              <h3>Order Summary</h3>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="summarySubtotal">R0.00</span>
+              </div>
+              <div id="summaryInterest" class="summary-row hidden">
+                <span>Interest</span>
+                <span id="summaryInterestAmount">R0.00</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span id="summaryTotal">R0.00</span>
+              </div>
+              <button class="cta full-width" id="completePaymentBtn" disabled>Complete Payment</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2025 Bassline Customs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/banking.js"></script>
+  <script>
+    let cart = [];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) {
+        alert('Please sign in to continue');
+        location.href = 'banking.html';
+        return;
+      }
+
+      initCheckout();
+    });
+
+    function initCheckout() {
+      // Add to cart buttons
+      document.querySelectorAll('.select-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const option = this.closest('.service-option');
+          addToCart({
+            name: option.querySelector('h3').textContent,
+            price: parseFloat(option.dataset.price),
+            service: option.dataset.service
+          });
+        });
+      });
+
+      // Payment method toggle
+      document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          toggleInstallmentOptions();
+          updatePaymentUI();
+        });
+      });
+
+      // Installment term change
+      document.getElementById('installmentTerm').addEventListener('change', calculateInstallments);
+
+      // Complete payment
+      document.getElementById('completePaymentBtn').addEventListener('click', processPayment);
+    }
+
+    function addToCart(item) {
+      cart.push({
+        ...item,
+        id: generateId()
+      });
+      updateCartDisplay();
+      showPaymentOptions();
+    }
+
+    function removeFromCart(itemId) {
+      cart = cart.filter(item => item.id !== itemId);
+      updateCartDisplay();
+      if (cart.length === 0) {
+        hidePaymentOptions();
+      }
+    }
+
+    function updateCartDisplay() {
+      const cartItemsContainer = document.getElementById('cartItems');
+      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p class="empty-cart">Your cart is empty. Add services above.</p>';
+        document.getElementById('summarySubtotal').textContent = 'R0.00';
+        document.getElementById('summaryTotal').textContent = 'R0.00';
+        document.getElementById('completePaymentBtn').disabled = true;
+        return;
+      }
+
+      cartItemsContainer.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="item-info">
+            <h4>${item.name}</h4>
+            <p class="price">R${item.price.toFixed(2)}</p>
+          </div>
+          <button class="remove-btn" onclick="removeFromCart('${item.id}')">Remove</button>
+        </div>
+      `).join('');
+
+      document.getElementById('summarySubtotal').textContent = `R${subtotal.toFixed(2)}`;
+      document.getElementById('summaryTotal').textContent = `R${subtotal.toFixed(2)}`;
+      document.getElementById('completePaymentBtn').disabled = false;
+
+      toggleInstallmentOptions();
+    }
+
+    function showPaymentOptions() {
+      document.getElementById('paymentOptions').style.display = 'block';
+      document.getElementById('paymentForm').style.display = 'block';
+      updatePaymentUI();
+    }
+
+    function hidePaymentOptions() {
+      document.getElementById('paymentOptions').style.display = 'none';
+      document.getElementById('paymentForm').style.display = 'none';
+      document.getElementById('installmentOptions').classList.add('hidden');
+    }
+
+    function toggleInstallmentOptions() {
+      if (cart.length === 0) return;
+
+      const isInstallment = document.getElementById('installment').checked;
+      document.getElementById('installmentOptions').classList.toggle('hidden', !isInstallment);
+      
+      if (isInstallment) {
+        calculateInstallments();
+      } else {
+        const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        document.getElementById('summaryInterest').classList.add('hidden');
+        document.getElementById('summaryTotal').textContent = `R${subtotal.toFixed(2)}`;
+      }
+    }
+
+    function calculateInstallments() {
+      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+      const term = parseInt(document.getElementById('installmentTerm').value);
+      const interestRates = { 3: 0.08, 6: 0.12, 12: 0.16 };
+      const rate = interestRates[term];
+      const interest = subtotal * rate;
+      const total = subtotal + interest;
+      const monthlyPayment = total / term;
+
+      let breakdown = `<p><strong>Monthly Payment: R${monthlyPayment.toFixed(2)}</strong></p>`;
+      breakdown += `<p class="text-small">Total Interest: R${interest.toFixed(2)}</p>`;
+      breakdown += `<p class="text-small">${term} payments of R${monthlyPayment.toFixed(2)}</p>`;
+
+      document.getElementById('installmentBreakdown').innerHTML = breakdown;
+      document.getElementById('summaryInterest').classList.remove('hidden');
+      document.getElementById('summaryInterestAmount').textContent = `R${interest.toFixed(2)}`;
+      document.getElementById('summaryTotal').textContent = `R${total.toFixed(2)}`;
+    }
+
+    function updatePaymentUI() {
+      const selected = document.querySelector('input[name="paymentMethod"]:checked');
+      const method = selected ? selected.value : 'full';
+
+      const paymentForm = document.getElementById('paymentForm');
+      const bankInstructions = document.getElementById('bankInstructions');
+
+      if (method === 'bank') {
+        paymentForm.style.display = 'none';
+        bankInstructions.classList.remove('hidden');
+        // populate bank details from config in banking.js
+        if (typeof MERCHANT_BANK_DETAILS !== 'undefined') {
+          document.getElementById('bankAccountName').textContent = MERCHANT_BANK_DETAILS.accountName;
+          document.getElementById('bankName').textContent = MERCHANT_BANK_DETAILS.bankName;
+          document.getElementById('bankAccountNumber').textContent = MERCHANT_BANK_DETAILS.accountNumber;
+          document.getElementById('bankBranchCode').textContent = MERCHANT_BANK_DETAILS.branchCode;
+        }
+      } else {
+        paymentForm.style.display = 'block';
+        bankInstructions.classList.add('hidden');
+      }
+
+      // Keep installment UI in sync
+      toggleInstallmentOptions();
+    }
+
+    function processPayment() {
+      if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+      }
+
+      const currentUser = getCurrentUser();
+      const method = document.querySelector('input[name="paymentMethod"]:checked')?.value || 'full';
+      const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+
+      if (method === 'bank') {
+        // Create a pending transaction and provide bank reference/instructions
+        const transaction = processTransaction(currentUser.id, {
+          services: cart.map(item => item.name).join(', '),
+          amount: subtotal,
+          method: 'bank',
+          term: 0,
+          interestRate: 0,
+          status: 'pending'
+        });
+
+        if (transaction) {
+          const reference = (typeof generateBankReference === 'function') ? generateBankReference(transaction.id) : transaction.id;
+          if (document.getElementById('bankReference')) document.getElementById('bankReference').textContent = reference;
+          if (typeof MERCHANT_BANK_DETAILS !== 'undefined') {
+            document.getElementById('bankAccountName').textContent = MERCHANT_BANK_DETAILS.accountName;
+            document.getElementById('bankName').textContent = MERCHANT_BANK_DETAILS.bankName;
+            document.getElementById('bankAccountNumber').textContent = MERCHANT_BANK_DETAILS.accountNumber;
+            document.getElementById('bankBranchCode').textContent = MERCHANT_BANK_DETAILS.branchCode;
+          }
+
+          alert(`Bank transfer initiated. Use reference ${reference} when you transfer R${subtotal.toFixed(2)}.\n\nYou will be redirected to your account where the invoice shows as pending.`);
+          cart = [];
+          location.href = 'banking.html';
+        } else {
+          alert('Could not create bank transfer record. Please try again.');
+        }
+
+        return;
+      }
+
+      // Card / immediate payments (existing simple flow)
+      const cardName = document.getElementById('cardName').value;
+      const cardNumber = document.getElementById('cardNumber').value;
+      const cardExpiry = document.getElementById('cardExpiry').value;
+      const cardCVC = document.getElementById('cardCVC').value;
+
+      if (!cardName || !cardNumber || !cardExpiry || !cardCVC) {
+        alert('Please fill in all payment details');
+        return;
+      }
+
+      const isInstallment = document.getElementById('installment').checked;
+      const term = isInstallment ? parseInt(document.getElementById('installmentTerm').value) : 0;
+      const interestRates = { 3: 0.08, 6: 0.12, 12: 0.16 };
+      const interestRate = isInstallment ? interestRates[term] : 0;
+
+      // Process payment for all items in cart
+      const transaction = processTransaction(currentUser.id, {
+        services: cart.map(item => item.name).join(', '),
+        amount: subtotal,
+        method: isInstallment ? 'installment' : 'full',
+        term: term,
+        interestRate: interestRate,
+        status: 'completed'
+      });
+
+      if (transaction) {
+        alert(`Payment successful! Order ID: ${transaction.id}\n\nServices: ${cart.map(item => item.name).join(', ')}\nTotal: R${subtotal.toFixed(2)}`);
+        cart = [];
+        location.href = 'banking.html';
+      } else {
+        alert('Payment failed. Please try again.');
+      }
+    }
+  </script>
+</body>
+</html>

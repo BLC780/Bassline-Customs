@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Bassline Customs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">Bassline Customs</a>
+      <nav class="nav">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container contact-page">
+      <h1>Contact Us</h1>
+      <p>Ready to upgrade your sound? Tell us about your vehicle and goals — we'll get back within 24 hours.</p>
+
+      <div class="contact-grid">
+        <div class="contact-form card">
+          <form id="contactForm">
+            <div class="form-row">
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-row">
+              <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-row">
+              <input type="text" id="vehicle" name="vehicle" placeholder="Vehicle make/model">
+            </div>
+            <div class="form-row">
+              <textarea id="message" name="message" rows="6" placeholder="Tell us what you want"></textarea>
+            </div>
+            <div class="form-row actions">
+              <button type="submit" class="btn">Send Message</button>
+              <a class="btn ghost" href="mailto:info@basslinecustoms.com">Email Us</a>
+            </div>
+          </form>
+        </div>
+
+        <aside class="contact-info card">
+          <h3>Visit / Call</h3>
+          <p><srong>address</srong> Annlin Pretoria</p>
+          <p><strong>Phone:</strong> (069) 200-0322</p>
+          <p><strong>Email:</strong> basslinecustoms101@gmail.com</p>
+          <a href="https://wa.me/27692000322" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004c-2.759 0-5.411 1.025-7.38 2.847-.41.384-.779.8-1.102 1.246C.638 6.945.1 8.435.1 10c0 5.514 4.486 10 10 10 1.331 0 2.628-.263 3.822-.743l.772.425 2.542 1.307-1.346-2.558c.576-1.041.893-2.237.893-3.431 0-5.514-4.486-10-10-10z"/>
+            </svg>
+            Chat on WhatsApp
+          </a>
+          <div class="map-placeholder">Map placeholder — replace with embed</div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Bassline Customs — All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+  <script src="js/main.js">
+  <script class="javascript">
+// Small UI behaviors for Bassline Customs starter site
+document.addEventListener('DOMContentLoaded',function(){
+  const yearEl=document.getElementById('year');
+  if(yearEl) yearEl.textContent=new Date().getFullYear();
+
+  const form=document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const vehicle=document.getElementById('vehicle').value.trim();
+      const message=document.getElementById('message').value.trim();
+      if(!name||!email){
+        alert('Please provide your name and email.');
+        return;
+      }
+      const subject=encodeURIComponent('Installation inquiry from '+name);
+      const body=encodeURIComponent(`Name: ${name}%0AEmail: ${email}%0AVehicle: ${vehicle}%0A%0A${message}`);
+      window.location.href=`mailto:info@basslinecustoms.com?subject=${subject}&body=${body}`;
+    })
+  }
+})
+</script>
+<script src="js/banking.js"></script>
+</main>
